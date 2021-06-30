@@ -1,11 +1,12 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 
 //Connexion à la base de données mongoDB avec mongoose
-mongoose.connect('mongodb+srv://Postil:Jimpo1599@projet6.xbckk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://Jimmy:Jimpo1599@projet6.xbckk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 //Enregistrement des routeurs
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 
