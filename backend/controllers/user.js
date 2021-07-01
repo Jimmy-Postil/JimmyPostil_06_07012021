@@ -11,6 +11,7 @@ exports.signup = (req, res, next) => {
         .then(hash => {
             //Création d'un nouvel utilisateur et hashage du mot de passe
             const user = new User({
+                userId: user._id,
                 email: req.body.email,
                 password: hash
             });
@@ -39,9 +40,9 @@ exports.login = (req, res, next) => {
                     }
                     //Si le mot de passe est le même on crée un token pour sécuriser le compte de l'utlisateur
                     res.status(200).json({
-                        userId: user_id,
+                        userId: user._id,
                         token: jwt.sign(
-                            { userId: user.id },
+                            { userId: user._id },
                             'RANDOM TOKEN SECRET',
                             { expiresIn: '24h' }
                         )
