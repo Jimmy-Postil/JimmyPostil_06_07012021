@@ -19,10 +19,12 @@ export class SingleSauceComponent implements OnInit {
   disliked: boolean;
   errorMessage: string;
 
+
   constructor(private sauces: SaucesService,
-              private route: ActivatedRoute,
-              private auth: AuthService,
-              private router: Router) { }
+    private route: ActivatedRoute,
+    private auth: AuthService,
+    private router: Router) {
+  }
 
   ngOnInit() {
     this.userId = this.auth.getUserId();

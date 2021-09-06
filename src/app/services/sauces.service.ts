@@ -84,11 +84,12 @@ export class SaucesService {
   ];
 
   constructor(private http: HttpClient,
-              private auth: AuthService) {}
+    private auth: AuthService) { }
 
   getSauces() {
     this.http.get('http://localhost:3000/api/sauces').subscribe(
       (sauces: Sauce[]) => {
+
         this.sauces$.next(sauces);
       },
       (error) => {
@@ -125,8 +126,8 @@ export class SaucesService {
           },
           (error) => {
             reject(error);
-        }
-      );
+          }
+        );
     });
   }
 

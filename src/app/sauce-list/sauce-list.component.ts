@@ -17,7 +17,7 @@ export class SauceListComponent implements OnInit {
   errorMsg: string;
 
   constructor(private sauce: SaucesService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
